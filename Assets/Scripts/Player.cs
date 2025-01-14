@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     private void Start ()
     {
+        //starts the player with 0 seeds planted and 5 available; updates UI to match
         _numSeedsPlanted = 0; 
         _numSeedsLeft = _numSeeds;
         _plantCountUI.UpdateSeeds(_numSeedsLeft, _numSeedsPlanted);
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //allows player movement
         if(Input.GetKey (KeyCode.UpArrow) || (Input.GetKey (KeyCode.W)))
 
 	{
@@ -49,11 +51,13 @@ public class Player : MonoBehaviour
 
     }
 
+    
     public void PlantSeed ()
     {
+        //plants sprout at players position, updates variables tracking values
         if(Input.GetKeyDown (KeyCode.Space))
         {
-            if(_numSeeds > 1)
+            if(_numSeedsLeft > 0)
             {
                 _numSeedsLeft -= 1;
                 _numSeedsPlanted += 1;
